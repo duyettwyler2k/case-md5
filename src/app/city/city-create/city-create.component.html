@@ -1,0 +1,37 @@
+<form #cityForm="ngForm" (ngSubmit)="createCity(cityForm)">
+  <tr>
+    <td>Name City</td>
+    <td><input type="text" name="name" #name="ngModel" required [(ngModel)]="city.nameCity"></td>
+    <td *ngIf="cityForm.invalid && isSubmitted">
+      <p *ngIf="name.errors?.required">NOT BLANK</p>
+    </td>
+  </tr>
+  <tr>
+    <td>Acreage</td>
+    <td><input type="text" name="acreage" #name="ngModel" required [(ngModel)]="city.acreage"></td>
+    <td *ngIf="cityForm.invalid && isSubmitted">
+      <p *ngIf="name.errors?.required">Khong de trong ck oi</p>
+    </td>
+  </tr>
+  <tr>
+    <td>Population</td>
+    <td><input type="text" name="population" [(ngModel)]="city.population"></td>
+  </tr>
+  <tr>
+    <td>GDP</td>
+    <td><input type="text" name="gdp" [(ngModel)]="city.gdp"></td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td><input type="text" name="description" [(ngModel)]="city.describe1"></td>
+  </tr>
+  <tr>
+    <td>Country</td>
+    <td>
+      <select name="country" [(ngModel)]="city.country">
+        <option *ngFor="let country of country"[value]="country.id">{{country.name}}</option>
+      </select>
+    </td>
+  </tr>
+  <button>Save</button>
+</form>

@@ -1,0 +1,36 @@
+<h3>Edit City</h3>
+<form (ngSubmit)="updateCity(city.id)">
+  <table>
+    <tr>
+      <td>Name City</td>
+      <td><input type="text"  name="nameCity" [(ngModel)]="city.nameCity"></td>
+    </tr>
+    <tr>
+      <td>Acreage</td>
+      <td><input type="text" name="acreage" [(ngModel)]="city.acreage"></td>
+    </tr>
+    <tr>
+      <td>Population</td>
+      <td><input type="text" name="population" [(ngModel)]="city.population"></td>
+    </tr>
+    <tr>
+      <td>GDP</td>
+      <td><input type="text" name="gdp" [(ngModel)]="city.gdp"></td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td><input type="text" name="description" [(ngModel)]="city.describe1"></td>
+    </tr>
+    <tr>
+      <td>Country</td>
+      <td>
+        <select name="country" [(ngModel)]="city.country">
+          <option *ngFor="let country of country"[value]="country.id">{{country.name}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <button>Update</button>
+    </tr>
+  </table>
+</form>
