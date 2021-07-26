@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {City} from '../../model/city';
 import {CountryService} from '../../country.service';
 import {Country} from '../../model/country';
+import {NotificationService} from '../../notification.service';
 
 @Component({
   selector: 'app-city-edit',
@@ -16,7 +17,8 @@ export class CityEditComponent implements OnInit {
 
   constructor(private cityService: CityService,
               private activatedRoute: ActivatedRoute,
-              private countryService: CountryService) {
+              private countryService: CountryService,
+              private notificationService: NotificationService) {
     this.activatedRoute.paramMap.subscribe(paramMap => {
       const id = paramMap.get('id');
       this.getById(id);
@@ -41,7 +43,7 @@ export class CityEditComponent implements OnInit {
 
   updateCity(id) {
     this.cityService.editCity(this.city, id).subscribe(() => {
-      alert('success');
+     this.notificationService.showSuccessMessage('Ok CK');
     });
   }
 

@@ -10,6 +10,10 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { LoginComponent } from './login/login.component';
 import {JwtInterceptor} from './helper/jwt-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
+import {AngularFireAnalyticsModule} from '@angular/fire/analytics';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFireStorageModule} from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -24,6 +28,8 @@ import {ErrorInterceptor} from './helper/error-interceptor';
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireStorageModule
     ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

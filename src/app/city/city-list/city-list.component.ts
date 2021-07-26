@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CityService} from '../../city.service';
 import {City} from '../../model/city';
 import {ActivatedRoute} from '@angular/router';
+import {NotificationService} from '../../notification.service';
 
 @Component({
   selector: 'app-city-list',
@@ -12,7 +13,8 @@ export class CityListComponent implements OnInit {
   city: City[] = [];
 
   constructor(private cityUser: CityService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private notificationService: NotificationService) {
     this.activatedRoute.paramMap.subscribe(paramMap => {
       const id = paramMap.get('id');
       this.deleteCity(id);
@@ -31,7 +33,7 @@ export class CityListComponent implements OnInit {
 
   deleteCity(id) {
     this.cityUser.deleteById(id).subscribe(() => {
-      alert('Ok');
+      this.notificationService.showSuccessMessage('Ok Ck');
       this.showAllCity();
     });
 
