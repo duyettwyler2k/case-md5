@@ -8,4 +8,5 @@ export interface City {
   gdp?: number;
   describe1?: number;
   country?: any;
+  image?: string;
 }
